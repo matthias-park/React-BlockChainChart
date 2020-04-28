@@ -20,12 +20,12 @@ const ResourceList = ({filter,search}) => {
     },[favoriteList])
 
     useEffect(() => {
-        setSortedList(sorting(resources));
-    },[sort])
-
-    useEffect(() => {
         setSortedList(resources);
     },[resources])
+
+    useEffect(() => {
+        setSortedList(sorting(resources));
+    },[sort, resources])
 
     const ratioColor = (number) => {
         if(number>0) return 'green';

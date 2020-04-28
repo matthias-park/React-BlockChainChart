@@ -15,8 +15,10 @@ const App = () => {
             <div className="row">
                 <div className="col-sm">
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-secondary" onClick={() => setfilter('favorite')} >관심</button>
-                        <button type="button" className="btn btn-secondary" onClick={() => setfilter('KRW')}>KRW</button>
+                        <button type="button" className="btn btn-secondary" onClick={() => setfilter('favorite')}> 
+                            <i className="fa fa-star" aria-hidden="true"></i> 관심
+                        </button>
+                        <button type="button" className="btn btn-secondary" autoFocus="autofocus" onClick={() => setfilter('KRW')}>KRW</button>
                         <button type="button" className="btn btn-secondary" onClick={() => setfilter('BTC')}>BTC</button>
                         <button type="button" className="btn btn-secondary" onClick={() => setfilter('ETH')}>ETH</button>
                     </div>
