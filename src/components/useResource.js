@@ -4,7 +4,7 @@ import axios from 'axios';
 const useResources = (filter, search, favoriteList, sort) => {
     const [resources, setResources] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
-    console.log(sort);  
+
     const fetchData = async () => {
         const request1 = axios.get('/assets');
         const request2 = axios.get("/trading-pairs/stats");
@@ -16,6 +16,8 @@ const useResources = (filter, search, favoriteList, sort) => {
                 const criteriaWord = el.name.substr(0, el.name.indexOf('-'));
                 const baseToken = el.name.substring(el.name.length-3, el.name.length);
                 el.title = response1.find(name => name.id === criteriaWord);
+                el.ratio = calcRatio(el.close, el.open);
+                el.totalPrice = calcTotalPrice(el.close, el.volume, el.name);
                 if(baseToken === 'BTC'){
                     el.exchange = Math.round(el.close * priceBTCbyKRW.close)
                 }
@@ -48,6 +50,15 @@ const useResources = (filter, search, favoriteList, sort) => {
             }
         })
         return result;
+    }
+
+    const calcRatio = (close, open) => {
+        return ((close - open) / close * 100).toFixed(2)
+    }
+
+    const calcTotalPrice = (price, volume, name) => {
+        const totalPrice =  Math.round(price * volume).toString();
+        return totalPrice
     }
 
     useEffect(() => {
