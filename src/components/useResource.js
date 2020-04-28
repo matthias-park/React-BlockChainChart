@@ -19,10 +19,10 @@ const useResources = (filter, search, favoriteList, sort) => {
                 el.ratio = calcRatio(el.close, el.open);
                 el.totalPrice = calcTotalPrice(el.close, el.volume, el.name);
                 if(baseToken === 'BTC'){
-                    el.exchange = Math.round(el.close * priceBTCbyKRW.close)
+                    el.exchange = Math.round(el.close * priceBTCbyKRW.close).toLocaleString();
                 }
                 if(baseToken === 'ETH'){
-                    el.exchange = Math.round(el.close * priceETHbyKRW.close)
+                    el.exchange = Math.round(el.close * priceETHbyKRW.close).toLocaleString();
                 }
                 return el;
             })

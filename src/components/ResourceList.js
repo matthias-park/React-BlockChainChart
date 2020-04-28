@@ -40,8 +40,8 @@ const ResourceList = ({filter,search}) => {
     const localeUnit = (totalPrice, name) => {
         const unit = name.substring(name.length-3, name.length);
         const totalPriceLength = totalPrice.length;
-        return totalPriceLength > 9 ? totalPrice.substring(0, totalPriceLength-9) + "억 " +unit
-            : totalPriceLength > 5 ? totalPrice.substring(0, totalPriceLength-5) + "만 " + unit
+        return totalPriceLength >= 9 ? totalPrice.substring(0, totalPriceLength-8) + "억 " +unit
+            : totalPriceLength >= 5 ? totalPrice.substring(0, totalPriceLength-4) + "만 " + unit
             : totalPrice + " " +unit
     }
 
